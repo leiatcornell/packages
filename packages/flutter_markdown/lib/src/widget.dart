@@ -173,6 +173,7 @@ abstract class MarkdownWidget extends StatefulWidget {
     this.styleSheet,
     this.styleSheetTheme = MarkdownStyleSheetBaseTheme.material,
     this.syntaxHighlighter,
+    this.onSelectionChanged,
     this.onTapLink,
     this.onTapText,
     this.imageDirectory,
@@ -215,6 +216,9 @@ abstract class MarkdownWidget extends StatefulWidget {
 
   /// Called when the user taps a link.
   final MarkdownTapLinkCallback? onTapLink;
+
+  /// Default [SelectionChangedCallback] used when [selectable] is set to true
+  final SelectionChangedCallback? onSelectionChanged;
 
   /// Default tap handler used when [selectable] is set to true
   final VoidCallback? onTapText;
@@ -353,6 +357,7 @@ class _MarkdownWidgetState extends State<MarkdownWidget>
       paddingBuilders: widget.paddingBuilders,
       fitContent: widget.fitContent,
       listItemCrossAxisAlignment: widget.listItemCrossAxisAlignment,
+      onSelectionChanged: widget.onSelectionChanged,
       onTapText: widget.onTapText,
       softLineBreak: widget.softLineBreak,
     );
@@ -415,6 +420,7 @@ class MarkdownBody extends MarkdownWidget {
     super.styleSheet,
     super.styleSheetTheme = null,
     super.syntaxHighlighter,
+    super.onSelectionChanged,
     super.onTapLink,
     super.onTapText,
     super.imageDirectory,
@@ -469,6 +475,7 @@ class Markdown extends MarkdownWidget {
     super.styleSheet,
     super.styleSheetTheme = null,
     super.syntaxHighlighter,
+    super.onSelectionChanged,
     super.onTapLink,
     super.onTapText,
     super.imageDirectory,
